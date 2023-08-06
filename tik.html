@@ -31,7 +31,7 @@
 </style>
 
 <body class="bg-light">
-	<nav class="navbar sticky-top bg-white shadow justify-content p-3" style="opacity: 0.98;">
+	<nav class="navbar bg-white shadow justify-content p-3" style="opacity: 0.98;">
 		<div>
 
 			<img src="logo.png" height="30px" width="30px"></img>
@@ -52,31 +52,32 @@
 		<div class="modal-dialog modal-dialog-centered">
 			<div class="modal-content">
 				<div class="modal-header>">
-					<h5 class="modal-title fs-5 p-3" id="selectModal">Open Note</h5>
+					<h5 class="modal-title fs-5 p-3" id="selectModal">Buka Catatan</h5>
 				</div>
 				<div class="modal-body">
 					<table id="table" class="table text-white">
-						<p>Type the name of the Note you want to open, then click on "Open Note".</p>
+						<p>Ketik nama catatan yang ingin dibuka, kemudian klik "Buka Catatan".</p>
 						<thead>
 							<th>No.</th>
-							<th>Note Name</th>
-							<th>Date Created</th>
+							<th>Nama Catatan</th>
+							<th>Tanggal Dibuat</th>
 						</thead>
 						<tbody id="tbody1">
 						</tbody>
 					</table>
-					<label>Type note name:</label><br>
+					<label>Ketikkan nama catatan:</label><br>
 					<input type="text" id="noteOpen" class="form-control"></input>
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-					<button type="button" id="openBtn" class="btn btn-primary" data-bs-dismiss="modal">Open Note</button>
+					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+					<button type="button" id="openBtn" class="btn btn-primary" data-bs-dismiss="modal">Buka
+						Catatan</button>
 				</div>
 			</div>
 		</div>
 	</div>
 	<div class="m-3 p-3 card shadow">
-		<label>Note Name</label><input type="text" id="name" class="form-control"></input>
+		<label>Nama Catatan</label><input type="text" id="name" class="form-control"></input>
 		<p id="date"></p>
 		<textarea id="note">
 		</textarea>
@@ -87,9 +88,9 @@
 		<script>
 			var simplemde = new SimpleMDE({
 				element: document.getElementById("note"),
-				showIcons: ["heading-bigger", "bold", "italic", "strikethrough", "quote", "code", "unordered-list", "ordered-list", "link", "image", "guide"],
+				showIcons: ["bold", "italic", "strikethrough", "quote", "code", "unordered-list", "ordered-list", "link", "image", "guide"],
 				spellcheck: false,
-				placeholder: "Type Here...",
+				placeholder: "Ketik Disini...",
 			});
 		</script>
 		<script type="module">
@@ -132,11 +133,11 @@
 						Date: today
 					})
 						.then(() => {
-							alert("Save Success!");
+							alert("Simpan Berhasil!");
 
 						})
 						.catch((error) => {
-							alert("How did this happen? Firebase error is " + error);
+							alert("Firebase Error is: " + error);
 						});
 				}
 			}
@@ -144,7 +145,7 @@
 			//empty checker, for name only cuz it wont have any kind of subtree
 			function emptychecker(str) {
 				if (str.length < 1) {
-					window.alert("Note Name field can't be left empty");
+					window.alert("Nama Catatan tidak bisa kosong.");
 					return true;
 				}
 				else {
@@ -161,11 +162,11 @@
 						//document.getElementById("date").value = "Last Edited: " + snapshot.val().Date;
 
 					} else {
-						alert("No notes found with this name. Please type the name correctly.");
+						alert("Tidak ada catatan ditemukan dengan nama ini. Mohon ketikkan nama dengan benar.");
 					}
 				})
 					.catch((error) => {
-						alert("How did this happen? Firebase error is " + error)
+						alert("Firebase error is: " + error)
 					});
 			}
 
@@ -173,21 +174,21 @@
 			function Delete() {
 				if (emptychecker(document.getElementById("name").value)) {
 				} else {
-					if (confirm("Are you sure?")) {
+					if (confirm("Hapus Catatan - Apakah kamu yakin?")) {
 						remove(ref(db, "Notes/" + "Informatika/" + document.getElementById("name").value))
 							.then(() => {
-								alert("Note Deleted");
 								document.getElementById("name").value = ""
 								simplemde.value("")
+								window.location.reload();
+								alert("Catatan dihapus.");
 							})
 							.catch((error) => {
-								alert("How did this happen? Firebase error is " + error)
+								alert("Firebase error is " + error)
 							})
 					} else {
 					}
 
 				}
-				window.location.reload();
 			};
 
 			var noteNo = 0;
