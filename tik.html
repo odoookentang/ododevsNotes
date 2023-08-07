@@ -22,20 +22,20 @@
 	}
 
 	.editor-preview h1 {
-		border-bottom: 1px solid #ddd
+		border-bottom: 3px solid #ddd
 	}
 
 	.editor-preview h1 {
-		border-bottom: 1px solid #eee
+		border-bottom: 3px solid #eee
 	}
 </style>
 
 <body class="bg-light">
-	<nav class="navbar bg-white shadow justify-content p-3" style="opacity: 0.98;">
+	<nav class="navbar bg-white shadow justify-content p-3">
 		<div>
 
 			<img src="logo.png" height="30px" width="30px"></img>
-			<h5>ododevsNotes</h5>
+			<h5>ododevsNotes DEV BRANCH fr</h5>
 
 		</div>
 		<div>
@@ -89,7 +89,7 @@
 			var simplemde = new SimpleMDE({
 				element: document.getElementById("note"),
 				showIcons: ["bold", "italic", "strikethrough", "quote", "code", "unordered-list", "ordered-list", "link", "image", "guide"],
-				spellcheck: false,
+				spellCheck: false,
 				placeholder: "Ketik Disini...",
 			});
 		</script>
@@ -119,7 +119,7 @@
 			var dd = String(today.getDate()).padStart(2, '0');
 			var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
 			var yyyy = today.getFullYear();
-			today = mm + '/' + dd + '/' + yyyy;
+			today = dd + '/' + mm + '/' + yyyy;
 
 			//functions
 			//save, since update and save buttons does the exact same shit
