@@ -1,99 +1,69 @@
 <!DOCTYPE html>
-<html lang="en-us">
-
+<html lang=en-us>
 <head>
-	<meta charset="UTF-8">
-	<title>ododevs Notes - Ilmu Pengetahuan Alam</title>
-	<link rel="icon" type="image/x-icon" href="fav.ico">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
-		integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js"
-		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
-		crossorigin="anonymous"></script>
+<meta charset=UTF-8>
+<title>ododevs Notes - Ilmu Pengetahuan Alam</title>
+<link rel=icon type=image/x-icon href=fav.ico>
+<meta name=viewport content="width=device-width, initial-scale=1">
+<link href=https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css rel=stylesheet integrity=sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9 crossorigin=anonymous>
+<script src=https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js integrity=sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm crossorigin=anonymous></script>
 </head>
-<style>
-	.editor-preview h1,
-	.editor-preview h2,
-	.editor-preview h3,
-	.editor-preview h4,
-	.editor-preview h5 {
-		margin-bottom: 10px
-	}
-
-	.editor-preview h1 {
-		border-bottom: 3px solid #ddd
-	}
-
-	.editor-preview h1 {
-		border-bottom: 3px solid #eee
-	}
-</style>
-
-<body class="bg-light">
-	<nav class="navbar bg-white shadow justify-content p-3">
-		<div>
-
-			<img src="logo.png" height="30px" width="30px"></img>
-			<h5>ododevsNotes</h5>
-
-		</div>
-		<div>
-			<h4>Ilmu Pengetahuan Alam</h4>
-			<div class="btn-group">
-				<a href="index.html" class="btn btn-dark">Kembali</a>
-				<button class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#selectModal">Buka Catatan</button>
-				<button id="saveBtn" class="btn btn-dark">Simpan Catatan</button>
-				<button id="delBtn" class="btn btn-dark">Hapus Catatan</button>
-			</div>
-		</div>
-	</nav>
-	<div class="modal fade" id="selectModal">
-		<div class="modal-dialog modal-dialog-centered">
-			<div class="modal-content">
-				<div class="modal-header>">
-					<h5 class="modal-title fs-5 p-3" id="selectModal">Buka Catatan</h5>
-				</div>
-				<div class="modal-body">
-					<table id="table" class="table text-white">
-						<p>Ketik nama catatan yang ingin dibuka, kemudian klik "Buka Catatan".</p>
-						<thead>
-							<th>No.</th>
-							<th>Nama Catatan</th>
-							<th>Tanggal Dibuat</th>
-						</thead>
-						<tbody id="tbody1">
-						</tbody>
-					</table>
-					<label>Ketikkan nama catatan:</label><br>
-					<input type="text" id="noteOpen" class="form-control"></input>
-				</div>
-				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-					<button type="button" id="openBtn" class="btn btn-primary" data-bs-dismiss="modal">Buka
-						Catatan</button>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="m-3 p-3 card shadow">
-		<label>Nama Catatan</label><input type="text" id="name" class="form-control"></input>
-		<p id="date"></p>
-		<textarea id="note">
+<style>.editor-preview h1,.editor-preview h2,.editor-preview h3,.editor-preview h4,.editor-preview h5{margin-bottom:10px}.editor-preview h1{border-bottom:3px solid #ddd}.editor-preview h1{border-bottom:3px solid #eee}</style>
+<body>
+<nav class="navbar shadow justify-content p-3">
+<div>
+<img src=logo.png height=30px width=30px></img>
+<h5>ododevsNotes</h5>
+</div>
+<div>
+<h4>Ilmu Pengetahuan Alam</h4>
+<div class=btn-group>
+<a href=index.html class="btn btn-outline-dark">Kembali</a>
+<button class="btn btn-outline-dark" data-bs-toggle=modal data-bs-target=#selectModal>Buka Catatan</button>
+<button id=saveBtn class="btn btn-outline-dark">Simpan Catatan</button>
+<button id=delBtn class="btn btn-outline-dark">Hapus Catatan</button>
+</div>
+</div>
+</nav>
+<div class="modal fade" id=selectModal>
+<div class="modal-dialog modal-dialog-centered">
+<div class=modal-content>
+<div class=modal-header>
+<h3 class="modal-title p-2" id=selectModal>Buka Catatan</h3>
+</div>
+<div class=modal-body>
+<table id=table class="table text-white">
+<p>Ketik nama catatan yang ingin dibuka, kemudian klik "Buka Catatan".</p>
+<thead>
+<th>No.</th>
+<th>Nama Catatan</th>
+<th>Tanggal Dibuat</th>
+</thead>
+<tbody id=tbody1>
+</tbody>
+</table>
+<label>Ketikkan nama catatan:</label><br>
+<input type=text id=noteOpen class=form-control></input>
+</div>
+<div class=modal-footer>
+<button type=button class="btn btn-outline-secondary" data-bs-dismiss=modal>Batal</button>
+<button type=button id=openBtn class="btn btn-outline-primary" data-bs-dismiss=modal>Buka
+Catatan</button>
+</div>
+</div>
+</div>
+</div>
+<div class="m-3 p-3 card shadow">
+<label>Nama Catatan</label><input type=text id=name class=form-control></input>
+<p id=date></p>
+<textarea id=note>
 		</textarea>
-		</section>
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
-		<link rel="stylesheet" href="simplemde.min.css">
-		<script src="simplemde.min.js"></script>
-		<script>
-			var simplemde = new SimpleMDE({
-				element: document.getElementById("note"),
-				showIcons: ["bold", "italic", "strikethrough", "quote", "code", "unordered-list", "ordered-list", "link", "image", "guide"],
-				spellChecker: false,
-				placeholder: "Ketik Disini...",
-			});
-		</script>
-		<script type="module">
+</section>
+<link rel=stylesheet href=https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css>
+<link rel=stylesheet href=simplemde.min.css>
+<script src=simplemde.min.js></script>
+<script>var simplemde=new SimpleMDE({element:document.getElementById("note"),showIcons:["bold","italic","strikethrough","quote","code","unordered-list","ordered-list","link","image","guide"],spellCheck:false,placeholder:"Ketik Disini...",promptURLs:true});</script>
+<script type=module>
 			// firebase import
 			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
 
@@ -179,7 +149,6 @@
 							.then(() => {
 								document.getElementById("name").value = ""
 								simplemde.value("")
-								window.location.reload();
 								alert("Catatan dihapus.");
 							})
 							.catch((error) => {
@@ -238,8 +207,9 @@
 			window.onload = simplemde.value("");
 			openBtn.addEventListener('click', Open);
 			saveBtn.addEventListener('click', Save);
+			saveBtn.addEventListener('click', FetchDataAllOnce);
 			delBtn.addEventListener('click', Delete);
+			delBtn.addEventListener('click', FetchDataAllOnce);
 		</script>
 </body>
-
 </html>
