@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en-us">
+
 <head>
 	<meta charset="UTF-8">
 	<title>ododevs Notes - Home</title>
@@ -11,26 +12,316 @@
 		integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
 		crossorigin="anonymous"></script>
 </head>
+
 <body>
-	<div class="m-4 p-4 card shadow">
-		<img src="logo.png" width="50" height="50""></img>
-		<h1>ododevsNotes Home</h1><br>
+	<nav class="navbar bg-white shadow justify-content p-3">
 		<div>
-		<a href=" ipa.html" class="btn btn-dark m-1">IPA</a>
-		<a href="ips.html" class="btn btn-dark m-1">IPS</a>
-		<a href="bindo.html" class="btn btn-dark m-1">Bahasa Indonesia</a>
-		<a href="bing.html" class="btn btn-dark m-1">Bahasa Inggris</a>
-		<a href="bjep.html" class="btn btn-dark m-1">Bahasa Jepang</a>
-		<a href="tik.html" class="btn btn-dark m-1">Informatika</a>
-		<a href="mtk.html" class="btn btn-dark m-1">Matematika</a>
-		<a href="pjok.html" class="btn btn-dark m-1">PJOK</a>
-		<a href="ais.html" class="btn btn-dark m-1">Agama Islam</a>
-		<a href="pp.html" class="btn btn-dark m-1">Pendidikan Pancasila</a>
-		<a href="senrup.html" class="btn btn-dark m-1">Seni Rupa</a>
-		<a href="misc.html" class="btn btn-dark m-1">Lainnya</a>
-		<a href="halp.html" class="btn btn-dark m-1">Cara Penggunaan</a>
-		<br><br><p>Muhammad Hafidz Ridho | ododevs@2023 | release (lol) 1.1.5</p>
+
+			<img src="logo.png" height="30px" width="30px"></img>
+			<h5>ododevsNotes</h5>
+
+		</div>
+		<div>
+			<div class="btn-group">
+				<button id="openBtn" class="btn btn-outline-dark">Buka Catatan</button>
+				<button id="saveBtn" class="btn btn-outline-dark">Simpan Catatan</button>
+				<button id="delBtn" class="btn btn-outline-dark">Hapus Catatan</button>
+			</div>
+		</div>
+	</nav>
+	<!--- Modals --->
+	<div class="modal fade" id="selectModal">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="selectModal">Buka Catatan</h5>
+				</div>
+				<div class="modal-body">
+					<div class="input-group mb-3">
+						<div class="input-group-prepend">
+							<label class="input-group-text">Pelajaran</label>
+						</div>
+						<select id="noteCategoryOpen" class="form-select">
+							<option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
+							<option value="Ilmu Pengetahuan Sosial">Ilmu Pengetahuan Sosial</option>
+							<option value="Bahasa Indonesia">Bahasa Indonesia</option>
+							<option value="Bahasa Inggris">Bahasa Inggris</option>
+							<option value="Bahasa Jepang">Bahasa Jepang</option>
+							<option value="Agama Islam">Agama Islam</option>
+							<option value="Seni Rupa">Seni Rupa</option>
+							<option value="Penjasorkes">Penjasorkes</option>
+							<option value="Informatika">Informatika</option>
+							<option value="Matematika">Matematika</option>
+							<option value="Lainnya">Lainnya</option>
+						</select>
+					</div>
+					<div class="input-group">
+						<div class="input-group-prepend">
+							<label class="input-group-text">Nama Catatan</label>
+						</div>
+						<select class="form-select" id="noteNameOpen">
+						</select>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+					<button id="openNote" type="button" class="btn btn-outline-success"
+						data-bs-dismiss="modal">Buka</button>
+				</div>
+			</div>
+		</div>
 	</div>
+	<div class="modal fade" id="savedModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="savedModal">Catatan Disimpan!</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="modal fade" id="deleteModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="deletedModal">Hapus Catatan?</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
+					<button id="deleteBtnConfirm" type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Hapus</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="modal fade" id="deletedModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="deletedModal">Catatan Dihapus</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="modal fade" id="echeckModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="deletedModal">Nama Catatan tidak boleh kosong!</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="card m-3 p-3 shadow">
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<label class="input-group-text">Pelajaran</label>
+			</div>
+			<select id="noteCategoryEditor" class="form-select">
+				<option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
+				<option value="Ilmu Pengetahuan Sosial">Ilmu Pengetahuan Sosial</option>
+				<option value="Bahasa Indonesia">Bahasa Indonesia</option>
+				<option value="Bahasa Inggris">Bahasa Inggris</option>
+				<option value="Bahasa Jepang">Bahasa Jepang</option>
+				<option value="Agama Islam">Agama Islam</option>
+				<option value="Seni Rupa">Seni Rupa</option>
+				<option value="Penjasorkes">Penjasorkes</option>
+				<option value="Informatika">Informatika</option>
+				<option value="Matematika">Matematika</option>
+				<option value="Lainnya">Lainnya</option>
+			</select>
+		</div>
+		<div class="input-group">
+			<div class="input-group-prepend">
+				<label class="input-group-text">Nama Catatan</label>
+			</div>
+			<input id="noteNameEditor" class="form-control d-inline" type="text" placeholder="Nama Catatan..."></input>
+		</div><br>
+		<textarea id="note"></textarea>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+		<link rel="stylesheet" href="simplemde.min.css">
+		<script src="simplemde.min.js"></script>
+		<script>
+			var simplemde = new SimpleMDE({
+				element: document.getElementById("note"),
+				showIcons: ["bold", "italic", "strikethrough", "quote", "code", "unordered-list", "ordered-list", "link", "image", "guide"],
+				spellCheck: false,
+				placeholder: "Ketik Disini...",
+			});
+		</script>
+		<script type="module">
+			// Import Firebase
+			import { initializeApp } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-app.js";
+
+			// Firebase Configs
+			const firebaseConfig = {
+				apiKey: "AIzaSyBZaZsZw-4MIdsoaUJkWLzzvNOXRQwC7B4",
+				authDomain: "ododevsnotes.firebaseapp.com",
+				databaseURL: "https://ododevsnotes-default-rtdb.firebaseio.com",
+				projectId: "ododevsnotes",
+				storageBucket: "ododevsnotes.appspot.com",
+				messagingSenderId: "423383404271",
+				appId: "1:423383404271:web:c19f6271f0b0feee70d51a"
+			};
+
+			// firebase init
+			const app = initializeApp(firebaseConfig);
+			console.log("firebase initiated :D")
+
+			// Realtime Database Prerequisites
+			import { getDatabase, ref, set, get, child, update, remove } from "https://www.gstatic.com/firebasejs/10.1.0/firebase-database.js"
+			console.log("imported firebase database :D")
+			var db = getDatabase();
+
+			// Bootstrap Modal and Button Reference
+			var selectModal = new bootstrap.Modal(document.getElementById('selectModal'));
+			document.getElementById("openBtn").addEventListener("click", showSelectModal);
+			function showSelectModal() {
+				selectModal.show();
+			}
+			var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+			document.getElementById("delBtn").addEventListener("click", showDeleteModal);
+			function showDeleteModal() {
+				deleteModal.show();
+			}
+			var deletedModal = new bootstrap.Modal(document.getElementById('deletedModal'));
+			var echeckModal = new bootstrap.Modal(document.getElementById('echeckModal'));
+			var savedModal = new bootstrap.Modal(document.getElementById('savedModal'));
+
+			// Check if Given String is Empty
+			function EmptyChecker(str) {
+				if (str.length < 1) {
+					return true;
+					console.log("emptystrchecker returned true :(")
+				}
+				else {
+					return false;
+					console.log("emptystrchecker returned false :D")
+				}
+			}
+
+
+
+			// Database Functions
+			// Save Notes
+			document.getElementById("saveBtn").addEventListener("click", SaveNote)
+			function SaveNote() {
+				if (EmptyChecker(document.getElementById("noteNameEditor").value)) {
+					echeckModal.show();
+				} else {
+					set(ref(db, "Notes/" + document.getElementById("noteCategoryEditor").value + "/" + document.getElementById("noteNameEditor").value), {
+						Name: document.getElementById("noteNameEditor").value,
+						Note: simplemde.value(),
+					})
+						.then(() => {
+							savedModal.show();
+							FetchAllDataOnce();
+
+						})
+						.catch((error) => {
+							alert("Firebase Error is: " + error);
+						});
+				}
+			}
+
+			// Open Note
+			document.getElementById("openNote").addEventListener("click", Open);
+			function Open() {
+				const dbRef = ref(db);
+				if (EmptyChecker(document.getElementById("noteNameOpen").value)) {
+					echeckModal.show();
+				} else {
+					get(child(dbRef, "Notes/" + document.getElementById("noteCategoryOpen").value + "/" + document.getElementById("noteNameOpen").value)).then((snapshot) => {
+						if (snapshot.exists()) {
+							document.getElementById("noteNameEditor").value = snapshot.val().Name;
+							simplemde.value(snapshot.val().Note);
+						}
+					})
+						.catch((error) => {
+							alert("Firebase error is: " + error)
+						});
+				}
+			}
+
+			// Delete Note
+			document.getElementById("deleteBtnConfirm").addEventListener("click", Delete)
+			function Delete() {
+				if (EmptyChecker(document.getElementById("noteNameEditor").value)) {
+					echeckModal.show();
+				} else {
+					remove(ref(db, "Notes/" + document.getElementById("noteCategoryEditor").value + "/" + document.getElementById("noteNameEditor").value))
+						.then(() => {
+							document.getElementById("noteNameEditor").value = ""
+							simplemde.value("");
+							FetchAllDataOnce();
+						})
+						.catch((error) => {
+							alert("Firebase error is " + error)
+						})
+				}
+			};
+
+			// Change The Select to be consistent
+			document.getElementById("noteCategoryEditor").addEventListener("click", selectElement);
+			function selectElement(){
+				document.getElementById("noteCategoryOpen").value = document.getElementById("noteCategoryEditor").value
+				FetchAllDataOnce();
+			}
+			document.getElementById("noteCategoryOpen").addEventListener("click", selectElement2);
+			function selectElement2(){
+				document.getElementById("noteCategoryEditor").value = document.getElementById("noteCategoryOpen").value
+				FetchAllDataOnce();
+			}
+
+			// Get data to the select modals
+			var noteNameOpen = document.getElementById("noteNameOpen");
+
+			//add item to table
+			function AddItemToTable(name) {
+				let opt = document.createElement("option");
+
+				opt.innerHTML = name;
+
+				noteNameOpen.appendChild(opt);
+			}
+
+			//add items to the table
+			function AddItemsToTable(notes) {
+				noteNameOpen.innerHTML = "";
+				notes.forEach(element => {
+					AddItemToTable(element.Name, element.Note);
+				});
+			}
+
+			// Fetch All Data Once
+			window.onload = FetchAllDataOnce();
+			document.getElementById("noteCategoryOpen").addEventListener("click", FetchAllDataOnce);
+			function FetchAllDataOnce() {
+				const dbref = ref(db);
+
+				get(child(dbref, "Notes/"+ document.getElementById("noteCategoryOpen").value + "/"))
+					.then((snapshot) => {
+						var notes = [];
+						snapshot.forEach(childSnapshot => {
+							notes.push(childSnapshot.val());
+						});
+						AddItemsToTable(notes);
+					})
+			}
+		</script>
 	</div>
 </body>
 
