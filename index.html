@@ -18,7 +18,7 @@
 		<div>
 
 			<img src="logo.png" height="30px" width="30px"></img>
-			<h5>ododevsNotes WTF ARE YOU HERE</h5>
+			<h5>ododevsNotes</h5>
 
 		</div>
 		<div>
@@ -41,7 +41,7 @@
 						<div class="input-group-prepend">
 							<label class="input-group-text">Pelajaran</label>
 						</div>
-						<select class="form-select">
+						<select id="noteCategoryOpen" class="form-select">
 							<option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
 							<option value="Ilmu Pengetahuan Sosial">Ilmu Pengetahuan Sosial</option>
 							<option value="Bahasa Indonesia">Bahasa Indonesia</option>
@@ -59,13 +59,14 @@
 						<div class="input-group-prepend">
 							<label class="input-group-text">Nama Catatan</label>
 						</div>
-						<select class="form-select" id="savedNotesList">
+						<select class="form-select" id="noteNameOpen">
 						</select>
 					</div>
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">Buka</button>
+					<button id="openNote" type="button" class="btn btn-outline-success"
+						data-bs-dismiss="modal">Buka</button>
 				</div>
 			</div>
 		</div>
@@ -79,9 +80,9 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
 				</div>
-				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="modal fade" id="deleteModal">
 		<div class="modal-dialog">
@@ -91,11 +92,12 @@
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Batal</button>
-					<button type="button" class="btn btn-danger" data-bs-dismiss="modal">Hapus</button>
-				</div>
+					<button id="deleteBtnConfirm" type="button" class="btn btn-danger"
+						data-bs-dismiss="modal">Hapus</button>
 				</div>
 			</div>
 		</div>
+	</div>
 	</div>
 	<div class="modal fade" id="deletedModal">
 		<div class="modal-dialog">
@@ -106,35 +108,48 @@
 				<div class="modal-footer">
 					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
 				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	<div class="modal fade" id="echeckModal">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header>">
+					<h5 class="modal-title fs-5 p-3" id="deletedModal">Nama Catatan tidak boleh kosong!</h5>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-outline-primary" data-bs-dismiss="modal">OK</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	</div>
 	<div class="card m-3 p-3 shadow">
-			<div class="input-group mb-3">
-				<div class="input-group-prepend">
-					<label class="input-group-text">Pelajaran</label>
-				</div>
-				<select id="noteCategoryEditor" class="form-select">
-					<option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
-					<option value="Ilmu Pengetahuan Sosial">Ilmu Pengetahuan Sosial</option>
-					<option value="Bahasa Indonesia">Bahasa Indonesia</option>
-					<option value="Bahasa Inggris">Bahasa Inggris</option>
-					<option value="Bahasa Jepang">Bahasa Jepang</option>
-					<option value="Agama Islam">Agama Islam</option>
-					<option value="Seni Rupa">Seni Rupa</option>
-					<option value="Penjasorkes">Penjasorkes</option>
-					<option value="Informatika">Informatika</option>
-					<option value="Matematika">Matematika</option>
-					<option value="Lainnya">Lainnya</option>
-				</select>
+		<div class="input-group mb-3">
+			<div class="input-group-prepend">
+				<label class="input-group-text">Pelajaran</label>
 			</div>
-			<div class="input-group">
-				<div class="input-group-prepend">
-					<label class="input-group-text">Nama Catatan</label>
-				</div>
-				<input id="noteNameEditor" class="form-control d-inline" type="text" placeholder="Nama Catatan..."></input>
-			</div><br>
+			<select id="noteCategoryEditor" class="form-select">
+				<option value="Ilmu Pengetahuan Alam">Ilmu Pengetahuan Alam</option>
+				<option value="Ilmu Pengetahuan Sosial">Ilmu Pengetahuan Sosial</option>
+				<option value="Bahasa Indonesia">Bahasa Indonesia</option>
+				<option value="Bahasa Inggris">Bahasa Inggris</option>
+				<option value="Bahasa Jepang">Bahasa Jepang</option>
+				<option value="Agama Islam">Agama Islam</option>
+				<option value="Seni Rupa">Seni Rupa</option>
+				<option value="Penjasorkes">Penjasorkes</option>
+				<option value="Informatika">Informatika</option>
+				<option value="Matematika">Matematika</option>
+				<option value="Lainnya">Lainnya</option>
+			</select>
+		</div>
+		<div class="input-group">
+			<div class="input-group-prepend">
+				<label class="input-group-text">Nama Catatan</label>
+			</div>
+			<input id="noteNameEditor" class="form-control d-inline" type="text" placeholder="Nama Catatan..."></input>
+		</div><br>
 		<textarea id="note"></textarea>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
 		<link rel="stylesheet" href="simplemde.min.css">
@@ -171,6 +186,21 @@
 			console.log("imported firebase database :D")
 			var db = getDatabase();
 
+			// Bootstrap Modal and Button Reference
+			var selectModal = new bootstrap.Modal(document.getElementById('selectModal'));
+			document.getElementById("openBtn").addEventListener("click", showSelectModal);
+			function showSelectModal() {
+				selectModal.show();
+			}
+			var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
+			document.getElementById("delBtn").addEventListener("click", showDeleteModal);
+			function showDeleteModal() {
+				deleteModal.show();
+			}
+			var deletedModal = new bootstrap.Modal(document.getElementById('deletedModal'));
+			var echeckModal = new bootstrap.Modal(document.getElementById('echeckModal'));
+			var savedModal = new bootstrap.Modal(document.getElementById('savedModal'));
+
 			// Check if Given String is Empty
 			function EmptyChecker(str) {
 				if (str.length < 1) {
@@ -183,32 +213,22 @@
 				}
 			}
 
-			// Bootstrap Modal and Button Reference
-			var selectModal = new bootstrap.Modal(document.getElementById('selectModal'));
-			document.getElementById("openBtn").addEventListener("click", showSelectModal);
-			function showSelectModal(){
-				selectModal.show();
-			}
-			var deleteModal = new bootstrap.Modal(document.getElementById('deleteModal'));
-			document.getElementById("delBtn").addEventListener("click", showDeleteModal);
-			function showDeleteModal(){
-				deleteModal.show();
-			}
-			var savedModal = new bootstrap.Modal(document.getElementById('savedModal'));
+
 
 			// Database Functions
 			// Save Notes
 			document.getElementById("saveBtn").addEventListener("click", SaveNote)
 			function SaveNote() {
 				if (EmptyChecker(document.getElementById("noteNameEditor").value)) {
-
+					echeckModal.show();
 				} else {
-					set(ref(db, "Notes/" + document.getElementById("noteCategoryEditor").value +"/"+ document.getElementById("noteNameEditor").value), {
+					set(ref(db, "Notes/" + document.getElementById("noteCategoryEditor").value + "/" + document.getElementById("noteNameEditor").value), {
 						Name: document.getElementById("noteNameEditor").value,
 						Note: simplemde.value(),
 					})
 						.then(() => {
 							savedModal.show();
+							FetchAllDataOnce();
 
 						})
 						.catch((error) => {
@@ -217,6 +237,90 @@
 				}
 			}
 
+			// Open Note
+			document.getElementById("openNote").addEventListener("click", Open);
+			function Open() {
+				const dbRef = ref(db);
+				if (EmptyChecker(document.getElementById("noteNameOpen").value)) {
+					echeckModal.show();
+				} else {
+					get(child(dbRef, "Notes/" + document.getElementById("noteCategoryOpen").value + "/" + document.getElementById("noteNameOpen").value)).then((snapshot) => {
+						if (snapshot.exists()) {
+							document.getElementById("noteNameEditor").value = snapshot.val().Name;
+							simplemde.value(snapshot.val().Note);
+						}
+					})
+						.catch((error) => {
+							alert("Firebase error is: " + error)
+						});
+				}
+			}
+
+			// Delete Note
+			document.getElementById("deleteBtnConfirm").addEventListener("click", Delete)
+			function Delete() {
+				if (EmptyChecker(document.getElementById("noteNameEditor").value)) {
+					echeckModal.show();
+				} else {
+					remove(ref(db, "Notes/" + document.getElementById("noteCategoryEditor").value + "/" + document.getElementById("noteNameEditor").value))
+						.then(() => {
+							document.getElementById("noteNameEditor").value = ""
+							simplemde.value("");
+							FetchAllDataOnce();
+						})
+						.catch((error) => {
+							alert("Firebase error is " + error)
+						})
+				}
+			};
+
+			// Change The Select to be consistent
+			document.getElementById("noteCategoryEditor").addEventListener("click", selectElement);
+			function selectElement(){
+				document.getElementById("noteCategoryOpen").value = document.getElementById("noteCategoryEditor").value
+				FetchAllDataOnce();
+			}
+			document.getElementById("noteCategoryOpen").addEventListener("click", selectElement2);
+			function selectElement2(){
+				document.getElementById("noteCategoryEditor").value = document.getElementById("noteCategoryOpen").value
+				FetchAllDataOnce();
+			}
+
+			// Get data to the select modals
+			var noteNameOpen = document.getElementById("noteNameOpen");
+
+			//add item to table
+			function AddItemToTable(name) {
+				let opt = document.createElement("option");
+
+				opt.innerHTML = name;
+
+				noteNameOpen.appendChild(opt);
+			}
+
+			//add items to the table
+			function AddItemsToTable(notes) {
+				noteNameOpen.innerHTML = "";
+				notes.forEach(element => {
+					AddItemToTable(element.Name, element.Note);
+				});
+			}
+
+			// Fetch All Data Once
+			window.onload = FetchAllDataOnce();
+			document.getElementById("noteCategoryOpen").addEventListener("click", FetchAllDataOnce);
+			function FetchAllDataOnce() {
+				const dbref = ref(db);
+
+				get(child(dbref, "Notes/"+ document.getElementById("noteCategoryOpen").value + "/"))
+					.then((snapshot) => {
+						var notes = [];
+						snapshot.forEach(childSnapshot => {
+							notes.push(childSnapshot.val());
+						});
+						AddItemsToTable(notes);
+					})
+			}
 		</script>
 	</div>
 </body>
