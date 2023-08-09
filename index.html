@@ -3,7 +3,7 @@
 
 <head>
 	<meta charset="UTF-8">
-	<title>ododevs Notes - Home</title>
+	<title>ododevs Notes</title>
 	<link rel="icon" type="image/x-icon" href="fav.ico">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -16,10 +16,8 @@
 <body>
 	<nav class="navbar bg-white shadow justify-content p-3">
 		<div>
-
 			<img src="logo.png" height="30px" width="30px"></img>
 			<h5>ododevsNotes</h5>
-
 		</div>
 		<div>
 			<div class="btn-group">
@@ -276,12 +274,12 @@
 
 			// Change The Select to be consistent
 			document.getElementById("noteCategoryEditor").addEventListener("change", selectElement);
-			function selectElement(){
+			function selectElement() {
 				document.getElementById("noteCategoryOpen").value = document.getElementById("noteCategoryEditor").value
 				FetchAllDataOnce();
 			}
 			document.getElementById("noteCategoryOpen").addEventListener("change", selectElement2);
-			function selectElement2(){
+			function selectElement2() {
 				document.getElementById("noteCategoryEditor").value = document.getElementById("noteCategoryOpen").value
 				FetchAllDataOnce();
 			}
@@ -312,7 +310,7 @@
 			function FetchAllDataOnce() {
 				const dbref = ref(db);
 
-				get(child(dbref, "Notes/"+ document.getElementById("noteCategoryOpen").value + "/"))
+				get(child(dbref, "Notes/" + document.getElementById("noteCategoryOpen").value + "/"))
 					.then((snapshot) => {
 						var notes = [];
 						snapshot.forEach(childSnapshot => {
@@ -322,6 +320,9 @@
 					})
 			}
 		</script>
+	</div>
+	<div class="card m-3 shadow p-3">
+		<span class="text-muted">ododevsNotes release 2.0.6 | Made with uhhh by Muhammad Hafidz Ridho </span>
 	</div>
 </body>
 
