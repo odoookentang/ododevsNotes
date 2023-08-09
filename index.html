@@ -275,12 +275,12 @@
 			};
 
 			// Change The Select to be consistent
-			document.getElementById("noteCategoryEditor").addEventListener("click", selectElement);
+			document.getElementById("noteCategoryEditor").addEventListener("change", selectElement);
 			function selectElement(){
 				document.getElementById("noteCategoryOpen").value = document.getElementById("noteCategoryEditor").value
 				FetchAllDataOnce();
 			}
-			document.getElementById("noteCategoryOpen").addEventListener("click", selectElement2);
+			document.getElementById("noteCategoryOpen").addEventListener("change", selectElement2);
 			function selectElement2(){
 				document.getElementById("noteCategoryEditor").value = document.getElementById("noteCategoryOpen").value
 				FetchAllDataOnce();
@@ -308,7 +308,7 @@
 
 			// Fetch All Data Once
 			window.onload = FetchAllDataOnce();
-			document.getElementById("noteCategoryOpen").addEventListener("click", FetchAllDataOnce);
+			document.getElementById("noteCategoryOpen").addEventListener("change", FetchAllDataOnce);
 			function FetchAllDataOnce() {
 				const dbref = ref(db);
 
