@@ -280,14 +280,13 @@
 				var printHTML = simplemde.markdown(render);
 				var fixTable = printHTML.replaceAll('table', 'table class="table"')
 				var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
-				WinPrint.document.write(`Printed from ododevsNotes.`);
-				WinPrint.document.write(`<head><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">` + fixTable);
+				WinPrint.document.write(`<head><img src="logo.png" height="30px" width="30px"></img><link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet">` + fixTable);
 				WinPrint.document.close();
 				WinPrint.focus();
 				setTimeout(function () {
 					WinPrint.print();
 					WinPrint.close();
-				}, 500);
+				}, 1500);
 			}
 
 			// Change The Select to be consistent
