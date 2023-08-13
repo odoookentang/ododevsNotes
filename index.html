@@ -14,7 +14,7 @@
 </head>
 
 <body>
-	<nav class="navbar bg-white shadow justify-content p-3">
+	<nav id="nodisplay" class="navbar bg-white shadow justify-content p-3">
 		<div>
 			<img src="logo.png" height="30px" width="30px"></img>
 			<h5>ododevsNotes</h5>
@@ -22,6 +22,7 @@
 		<div>
 			<div class="btn-group">
 				<button id="openBtn" class="btn btn-outline-dark">Buka Catatan</button>
+				<button id="printBtn" class="btn btn-outline-dark">Cetak Catatan</button>
 				<button id="saveBtn" class="btn btn-outline-dark">Simpan Catatan</button>
 				<button id="delBtn" class="btn btn-outline-dark">Hapus Catatan</button>
 			</div>
@@ -123,7 +124,7 @@
 		</div>
 	</div>
 	</div>
-	<div class="card m-3 p-3 shadow">
+	<div class="card m-3 p-3 shadow" id="content">
 		<div class="input-group mb-3">
 			<div class="input-group-prepend">
 				<label class="input-group-text">Pelajaran</label>
@@ -272,6 +273,22 @@
 				}
 			};
 
+			//i hope this even prints notes
+			document.getElementById("printBtn").addEventListener("click", Print)
+			function Print() {
+				var render = simplemde.value();
+				var printHTML = simplemde.markdown(render);
+				var WinPrint = window.open('', '', 'left=0,top=0,width=800,height=900,toolbar=0,scrollbars=0,status=0');
+				WinPrint.document.write(`Printed from ododevsNotes.`);
+				WinPrint.document.write(printHTML);
+				WinPrint.document.close();
+				WinPrint.focus();
+				setTimeout(function () {
+					WinPrint.print();
+					WinPrint.close();
+				}, 500);
+			}
+
 			// Change The Select to be consistent
 			document.getElementById("noteCategoryEditor").addEventListener("change", selectElement);
 			function selectElement() {
@@ -321,7 +338,7 @@
 			}
 		</script>
 	</div>
-	<div class="card m-3 shadow p-3">
+	<div id="nodisplay" class="card m-3 shadow p-3">
 		<span class="text-muted">ododevsNotes release 2.0.6 | Made with uhhh by Muhammad Hafidz Ridho </span>
 	</div>
 </body>
