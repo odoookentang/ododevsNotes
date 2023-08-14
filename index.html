@@ -160,93 +160,88 @@
 			var simplemde = new SimpleMDE({
 				element: document.getElementById("note"),
 				toolbar: [{
-					name: "Bold",
+					name: "bold",
 					action: SimpleMDE.toggleBold,
 					className: "bi bi-type-bold",
 					title: "Bold",
 				},
 				{
-					name: "Italic",
+					name: "italic",
 					action: SimpleMDE.toggleItalic,
 					className: "bi bi-type-italic",
 					title: "Italic"
 				},
 				{
-					name: "Strikethrough",
+					name: "strikethrough",
 					action: SimpleMDE.toggleStrikethrough,
 					className: "bi bi-type-strikethrough",
 					title: "Strikethrough"
 				},
 				{
-					name: "Heading 1",
+					name: "heading-1",
 					action: SimpleMDE.toggleHeading1,
 					className: "bi bi-type-h1",
 					title: "Heading 1 (Huge)"
 				},
 				{
-					name: "Heading 2",
+					name: "heading-2",
 					action: SimpleMDE.toggleHeading2,
 					className: "bi bi-type-h2",
 					title: "Heading 2 (Medium)"
 				},
 				{
-					name: "Heading 3",
+					name: "heading-3",
 					action: SimpleMDE.toggleHeading3,
 					className: "bi bi-type-h3",
 					title: "Heading 3 (Small)"
 				},
 				"|",
 				{
-					name: "Code",
+					name: "code",
 					action: SimpleMDE.toggleCodeBlock,
 					className: "bi bi-code-square",
 					title: "Code Block"
 				},
 				{
-					name: "Unordered List",
+					name: "unordered-list",
 					action: SimpleMDE.toggleUnorderedList,
 					className: "bi bi-list-task",
 					title: "Unordered List (Bullets)"
 				},
 				{
-					name: "Ordered List",
+					name: "ordered-list",
 					action: SimpleMDE.toggleOrderedList,
 					className: "bi bi-list-ol",
 					title: "Ordered List (Numbers)"
 				},
 				{
-					name: "Link",
+					name: "link",
 					action: SimpleMDE.drawLink,
 					className: "bi bi-link-45deg",
 					title: "Add Link"
 				},
 				{
-					name: "Image",
+					name: "image",
 					action: SimpleMDE.drawImage,
 					className: "bi bi-image",
 					title: "Add Image"
 				},
 				{
-					name: "Table",
+					name: "table",
 					action: SimpleMDE.drawTable,
 					className: "bi bi-table",
 					title: "Add Table"
 				},
 				"|",
+				"preview",
 				{
-					name: "Preview",
-					action: SimpleMDE.togglePreview,
-					className: "bi bi-eye",
-					title: "Preview Document"
-				},
-				{
-					name: "Side By Side",
+					name: "side-by-side",
 					action: SimpleMDE.toggleSideBySide,
 					className: "bi bi-layout-split",
 					title: "Side (Editor) By Side (Preview)"
 				},
 				{
-					name: "Fullscreen",
+					name: "fullscreen",
 					action: SimpleMDE.toggleFullScreen,
 					className: "bi bi-arrows-fullscreen",
 					title: "Toggle Fullscreen"
